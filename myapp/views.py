@@ -13,22 +13,10 @@ class BookDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ReadOnlyBookSerializer
     permission_classes = [permissions.IsAuthenticated] 
 
-'''class GroupRequiredMixin(permissions.BasePermission):
-    group_required = None
-
-    def has_permission(self, request, view):
-        if self.group_required is None:
-            return False
-        return request.user.groups.filter(name=self.storekeepers).exists()'''
-
 class StorekeeperBookDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = StorekeeperBookSerializer   
-    permission_classes = [IsStorekeeper]
-
-    '''def test_func(self):
-        return self.request.user.groups.filter(name=self.group_required).exists()'''
-    
+    permission_classes = [IsStorekeeper]    
 
 class LibrarianBookDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Book.objects.all()

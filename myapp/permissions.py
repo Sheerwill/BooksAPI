@@ -6,17 +6,8 @@ class IsStorekeeper(permissions.BasePermission):
         if not request.user.is_authenticated:
             return False
 
-        # Check if the user is in the 'shopkeepers' group        
-        return request.user.groups.filter(name='storekeepers').exists()
-    
-class IsShopkeeper(permissions.BasePermission):
-    def has_permission(self, request, view):
-        # Check if the user is authenticated
-        if not request.user.is_authenticated:
-            return False
-
-        # Check if the user is in the 'shopkeepers' group        
-        return request.user.groups.filter(name='storekeepers').exists()
+        # Check if the user is in the 'storekeepers' group        
+        return request.user.groups.filter(name='storekeepers').exists() 
     
 class IsLibrarian(permissions.BasePermission):
     def has_permission(self, request, view):
@@ -24,5 +15,5 @@ class IsLibrarian(permissions.BasePermission):
         if not request.user.is_authenticated:
             return False
 
-        # Check if the user is in the 'shopkeepers' group        
+        # Check if the user is in the 'librarian' group        
         return request.user.groups.filter(name='librarians').exists()
